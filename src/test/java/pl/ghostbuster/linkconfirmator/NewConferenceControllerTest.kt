@@ -81,6 +81,13 @@ class NewConferenceControllerTest {
                 }
     }
 
+    @Test
+    fun `should render result page after submitting conference`() {
+        submitConference("email@test.pl")
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andExpect(view().name("result"))
+    }
+
     private fun submitConference(emails: String): ResultActions {
         return mockMvc.perform(post("/new_conference")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
