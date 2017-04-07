@@ -38,7 +38,7 @@ class NewConferenceControllerTest {
     }
 
     @Test
-    fun `should return ok status on http get`() {
+    fun `should return new_conference page on conference endpoint`() {
         mockMvc.perform(get("/conference"))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(view().name("new_conference"))
