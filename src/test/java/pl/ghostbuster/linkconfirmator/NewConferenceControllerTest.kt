@@ -54,7 +54,6 @@ class NewConferenceControllerTest {
     @Test
     fun `should save conference with one participant to repository`() {
         submitConference("test@test.github.pl")
-                .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpectConference {
                     assertThat(participants).hasSize(1)
                     participants.first().run {
@@ -67,7 +66,6 @@ class NewConferenceControllerTest {
     @Test
     fun `should save conference with two participants to repository`() {
         submitConference("first@email.pl, second@email.pl")
-                .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpectConference {
                     assertThat(participants).hasSize(2)
                     participants[0].run {
@@ -86,6 +84,16 @@ class NewConferenceControllerTest {
         submitConference("email@test.pl")
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(view().name("result"))
+    }
+
+    @Test
+    fun `should render participant with its confirmation link`() {
+        submitConference("email@test.pl")
+                .andDo {
+                    val actual = Jsoup.parse(it.response.contentAsString).toString()
+                    val expected = Jsoup.parse(stringFromFile("result_rendered.html")).toString()
+                    assertThat(actual).isEqualTo(expected)
+                }
     }
 
     private fun submitConference(emails: String): ResultActions {
