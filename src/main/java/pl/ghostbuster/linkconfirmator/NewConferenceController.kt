@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
-class GreetingController {
+class NewConferenceController {
 
-    @GetMapping("/greeting")
-    fun greetingForm(model: Model): String {
-        model.addAttribute("greeting", Greeting())
-        return "greeting"
+    @GetMapping("/conference")
+    fun confereneceForm(model: Model): String {
+        model.addAttribute("conference", Conference())
+        return "new_conference"
     }
 
-    @PostMapping("/greeting")
-    fun greetingSubmit(@ModelAttribute greeting: Greeting): String {
+    @PostMapping("/conference")
+    fun conferenceSubmit(@ModelAttribute conference: Conference): String {
         return "result"
     }
 }
