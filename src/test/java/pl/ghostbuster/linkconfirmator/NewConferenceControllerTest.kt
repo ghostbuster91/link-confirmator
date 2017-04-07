@@ -55,12 +55,12 @@ class NewConferenceControllerTest {
     fun `should save conference with one participant to repository`() {
         submitConference("test@test.github.pl")
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andDo {
-                    val conferences = conferenceRepository.findAll()
-                    assertThat(conferences).hasSize(1)
-                    val participants = conferences.first().participants
+                .andExpectConference {
                     assertThat(participants).hasSize(1)
-                    assertThat(participants.first().email).isEqualTo("test@test.github.pl")
+                    participants.first().run {
+                        assertThat(email).isEqualTo("test@test.github.pl")
+                        assertThat(confirmationLink).isEqualTo("http://wp.pl")
+                    }
                 }
     }
 
@@ -68,13 +68,16 @@ class NewConferenceControllerTest {
     fun `should save conference with two participants to repository`() {
         submitConference("first@email.pl, second@email.pl")
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andDo {
-                    val conferences = conferenceRepository.findAll()
-                    assertThat(conferences).hasSize(1)
-                    val participants = conferences.first().participants
+                .andExpectConference {
                     assertThat(participants).hasSize(2)
-                    assertThat(participants[0].email).isEqualTo("first@email.pl")
-                    assertThat(participants[1].email).isEqualTo("second@email.pl")
+                    participants[0].run {
+                        assertThat(email).isEqualTo("first@email.pl")
+                        assertThat(confirmationLink).isEqualTo("http://wp.pl")
+                    }
+                    participants[1].run {
+                        assertThat(email).isEqualTo("second@email.pl")
+                        assertThat(confirmationLink).isEqualTo("http://wp.pl")
+                    }
                 }
     }
 
@@ -93,5 +96,13 @@ class NewConferenceControllerTest {
     @After
     fun tearDown() {
         conferenceRepository.deleteAll()
+    }
+
+    private fun ResultActions.andExpectConference(function: ConferenceEntity.() -> Unit) {
+        andDo {
+            val conferences = conferenceRepository.findAll()
+            assertThat(conferences).hasSize(1)
+            function(conferences.first())
+        }
     }
 }
