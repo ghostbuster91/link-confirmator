@@ -2,6 +2,7 @@ package pl.ghostbuster.linkconfirmator
 
 import org.assertj.core.api.Assertions.assertThat
 import org.jsoup.Jsoup
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -14,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
@@ -51,10 +53,7 @@ class NewConferenceControllerTest {
 
     @Test
     fun `should save conference with one participant to repository`() {
-        mockMvc.perform(post("/new_conference")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("participantsEmails", "test@test.github.pl")
-        )
+        submitConference("test@test.github.pl")
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andDo {
                     val conferences = conferenceRepository.findAll()
@@ -65,8 +64,34 @@ class NewConferenceControllerTest {
                 }
     }
 
+    @Test
+    fun `should save conference with two participants to repository`() {
+        submitConference("first@email.pl, second@email.pl")
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andDo {
+                    val conferences = conferenceRepository.findAll()
+                    assertThat(conferences).hasSize(1)
+                    val participants = conferences.first().participants
+                    assertThat(participants).hasSize(2)
+                    assertThat(participants[0].email).isEqualTo("first@email.pl")
+                    assertThat(participants[1].email).isEqualTo("second@email.pl")
+                }
+    }
+
+    private fun submitConference(emails: String): ResultActions {
+        return mockMvc.perform(post("/new_conference")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("participantsEmails", emails)
+        )
+    }
+
     @EnableAutoConfiguration
     @ComponentScan
     @Configuration
     open class TestConfiguration
+
+    @After
+    fun tearDown() {
+        conferenceRepository.deleteAll()
+    }
 }
