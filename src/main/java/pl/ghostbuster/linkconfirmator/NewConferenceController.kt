@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping
 @Controller
 class NewConferenceController(val repository: ConferenceRepository) {
 
-    @GetMapping("/conference")
+    @GetMapping("/new_conference")
     fun confereneceForm(model: Model): String {
         model.addAttribute("conference", ConferenceForm())
         return "new_conference"
     }
 
-    @PostMapping("/conference")
+    @PostMapping("/new_conference")
     fun conferenceSubmit(@ModelAttribute conference: ConferenceForm, model: Model): String {
         val emails = conference.participantsEmails?.split(",")!!
         val participants = emails.map { Participant(email = it.trim(), confirmationLink = "http://wp.pl") }

@@ -39,7 +39,7 @@ class NewConferenceControllerTest {
 
     @Test
     fun `should return new_conference page on conference endpoint`() {
-        mockMvc.perform(get("/conference"))
+        mockMvc.perform(get("/new_conference"))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(view().name("new_conference"))
                 .andDo {
@@ -51,7 +51,7 @@ class NewConferenceControllerTest {
 
     @Test
     fun `should save conference with participants to repository`() {
-        mockMvc.perform(post("/conference")
+        mockMvc.perform(post("/new_conference")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("participantsEmails", "test@test.github.pl")
         )
