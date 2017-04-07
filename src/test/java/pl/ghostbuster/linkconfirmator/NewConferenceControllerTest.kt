@@ -50,7 +50,7 @@ class NewConferenceControllerTest {
     }
 
     @Test
-    fun `should save conference with participants to repository`() {
+    fun `should save conference with one participant to repository`() {
         mockMvc.perform(post("/new_conference")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("participantsEmails", "test@test.github.pl")
