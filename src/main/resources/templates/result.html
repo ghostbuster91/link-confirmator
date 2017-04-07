@@ -6,7 +6,9 @@
 </head>
 <body>
 <h1>Result</h1>
-<p th:text="'content: ' + ${conference.participantsEmails}"/>
+<ul>
+    <li th:each="item : ${linkedParticipants}" th:text="${item}">Item description here...</li>
+</ul>
 <a href="/conference">Submit another conference</a>
 </body>
 </html>

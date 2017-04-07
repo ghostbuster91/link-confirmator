@@ -7,16 +7,21 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
-class NewConferenceController {
+class NewConferenceController(val repository: ConferenceRepository) {
 
     @GetMapping("/conference")
     fun confereneceForm(model: Model): String {
-        model.addAttribute("conference", Conference())
+        model.addAttribute("conference", ConferenceForm())
         return "new_conference"
     }
 
     @PostMapping("/conference")
-    fun conferenceSubmit(@ModelAttribute conference: Conference): String {
+    fun conferenceSubmit(@ModelAttribute conference: ConferenceForm, model: Model): String {
+        val emails = conference.participantsEmails?.split(",")!!
+        val participants = emails.map { Participant(email = it.trim(), confirmationLink = "http://wp.pl") }
+        repository.save(ConferenceEntity(participants = participants))
+        val linkedParticipants = participants.map { it.email to it.confirmationLink }
+        model.addAttribute("linkedParticipants", linkedParticipants)
         return "result"
     }
 }
