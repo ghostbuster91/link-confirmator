@@ -38,7 +38,7 @@ class NewConferenceControllerTest {
     }
 
     @Test
-    fun shouldReturnOkStatusOnHttpGet() {
+    fun `should return ok status on http get`() {
         mockMvc.perform(get("/conference"))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(view().name("new_conference"))
@@ -50,7 +50,7 @@ class NewConferenceControllerTest {
     }
 
     @Test
-    fun shouldSaveConferenceWithParticipantsToRepository() {
+    fun `should save conference with participants to repository`() {
         mockMvc.perform(post("/conference")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("participantsEmails", "test@test.github.pl")
