@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.model
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.view
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
@@ -87,13 +88,9 @@ class NewConferenceControllerTest {
     }
 
     @Test
-    fun `should render participant with its confirmation link`() {
+    fun `should return participant with its confirmation link after submitting conference`() {
         submitConference("email@test.pl")
-                .andDo {
-                    val actual = Jsoup.parse(it.response.contentAsString).toString()
-                    val expected = Jsoup.parse(stringFromFile("result_rendered.html")).toString()
-                    assertThat(actual).isEqualTo(expected)
-                }
+                .andExpect(model().attribute("linkedParticipants", listOf("email@test.pl" to "http://wp.pl")))
     }
 
     private fun submitConference(emails: String): ResultActions {
