@@ -88,6 +88,16 @@ class NewConferenceControllerTest {
                 .andExpect(model().attribute("linkedParticipants", listOf("email@test.pl" to "http://wp.pl")))
     }
 
+    @Test
+    fun `should return two participants with their confirmation links after submitting conference`() {
+        submitConference("email@test.pl, other@email.pl")
+                .andExpect(model()
+                        .attribute("linkedParticipants",
+                                listOf("email@test.pl" to "http://wp.pl",
+                                        "other@email.pl" to "http://wp.pl")
+                        ))
+    }
+
     private fun submitConference(emails: String): ResultActions {
         return mockMvc.perform(post("/new_conference")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
