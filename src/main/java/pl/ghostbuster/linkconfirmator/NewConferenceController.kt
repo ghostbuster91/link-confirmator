@@ -12,7 +12,7 @@ class NewConferenceController(val repository: ConferenceRepository) {
     @GetMapping("/new_conference")
     fun confereneceForm(model: Model): String {
         model.addAttribute("conference", ConferenceForm())
-        return "new_conference"
+        return "new_conference_submission"
     }
 
     @PostMapping("/new_conference")
@@ -22,7 +22,7 @@ class NewConferenceController(val repository: ConferenceRepository) {
         repository.save(ConferenceEntity(participants = participants))
         val linkedParticipants = participants.map { it.email to it.confirmationLink }
         model.addAttribute("linkedParticipants", linkedParticipants)
-        return "result"
+        return "new_conference_submitted"
     }
 }
 
