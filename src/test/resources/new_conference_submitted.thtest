@@ -2,7 +2,7 @@
 %CONTEXT
 linkedParticipants = {"email@test.pl, http://wp.pl"}
 # ------------------------------------------
-%INPUT (file:/Users/ghost/workspace/backend/link-confirmator/src/main/resources/templates/new_conference_submitted.html)
+%INPUT (file:src/main/resources/templates/new_conference_submitted.html)
 # ------------------------------------------
 %OUTPUT
 <!DOCTYPE HTML>
