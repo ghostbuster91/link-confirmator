@@ -1,7 +1,6 @@
 package pl.ghostbuster.linkconfirmator
 
 import org.assertj.core.api.Assertions.assertThat
-import org.jsoup.Jsoup
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -45,11 +44,7 @@ class NewConferenceControllerTest {
         mockMvc.perform(get("/new_conference"))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(view().name("new_conference"))
-                .andDo {
-                    val actual = Jsoup.parse(it.response.contentAsString).toString()
-                    val expected = Jsoup.parse(stringFromFile("new_conference_rendered.html")).toString()
-                    assertThat(actual).isEqualTo(expected)
-                }
+                .andExpect(model().attribute("conference", ConferenceForm()))
     }
 
     @Test
