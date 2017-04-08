@@ -34,4 +34,5 @@ dependencies {
         exclude group: 'org.jetbrains.kotlin'
     }
     testCompile group: "org.mockito", name: "mockito-core", version: "2.7.21"
+    testCompile group: 'org.thymeleaf', name: 'thymeleaf-testing', version: '2.1.4.RELEASE'
 }
