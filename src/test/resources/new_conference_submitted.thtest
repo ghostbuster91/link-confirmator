@@ -16,6 +16,6 @@ linkedParticipants = {"email@test.pl, http://wp.pl"}
 <ul>
     <li>email@test.pl, http://wp.pl</li>
 </ul>
-<a href="/conference">Submit another conference</a>
+<a href="/new_conference">Submit another conference</a>
 </body>
 </html>
