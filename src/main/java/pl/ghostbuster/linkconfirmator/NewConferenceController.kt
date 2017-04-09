@@ -18,11 +18,14 @@ class NewConferenceController(val repository: ConferenceRepository) {
     @PostMapping("/new_conference")
     fun conferenceSubmit(@ModelAttribute conference: ConferenceForm, model: Model): String {
         val emails = conference.participantsEmails?.split(",")!!
-        val participants = emails.map { Participant(email = it.trim(), confirmationLink = "http://wp.pl") }
-        repository.save(ConferenceEntity(participants = participants))
-        val linkedParticipants = participants.map { it.email to it.confirmationLink }
+        val saveConference = repository.save(ConferenceEntity(participants = emails.map { Participant(email = it.trim()) }))
+        val linkedParticipants = saveConference.participants.map { it.email to createConfirmationLink(it) }
         model.addAttribute("linkedParticipants", linkedParticipants)
         return "new_conference_submitted"
+    }
+
+    private fun createConfirmationLink(participant: Participant): String {
+        return "http://localhost:8080/confirm/" + participant.id
     }
 }
 

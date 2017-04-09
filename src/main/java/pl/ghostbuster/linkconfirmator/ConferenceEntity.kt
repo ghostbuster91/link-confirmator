@@ -16,7 +16,6 @@ data class ConferenceEntity(
 @Entity
 data class Participant(
         var email: String = "",
-        var confirmationLink: String = "",
         var confirmed: Boolean = false,
         @Id @GeneratedValue
         var id: UUID = DEFAULT_UUID

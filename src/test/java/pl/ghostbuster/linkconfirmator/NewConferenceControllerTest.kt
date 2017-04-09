@@ -1,8 +1,7 @@
 package pl.ghostbuster.linkconfirmator
 
-import com.nhaarman.mockito_kotlin.argThat
-import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.*
+import org.junit.Before
 import org.junit.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.ResultActions
@@ -19,6 +18,11 @@ class NewConferenceControllerTest {
     private val controller = NewConferenceController(conferenceRepository)
     private val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
+    @Before
+    fun setUp() {
+        whenever(conferenceRepository.save(any<ConferenceEntity>())).thenReturn(ConferenceEntity())
+    }
+
     @Test
     fun `should return new_conference_submission page on conference endpoint`() {
         mockMvc.perform(get("/new_conference"))
@@ -33,7 +37,6 @@ class NewConferenceControllerTest {
                 .andDo {
                     verify(conferenceRepository).save(argThat<ConferenceEntity> {
                         participants[0].email == "test@test.github.pl"
-                                && participants[0].confirmationLink == "http://wp.pl"
                     })
                 }
     }
@@ -44,9 +47,7 @@ class NewConferenceControllerTest {
                 .andDo {
                     verify(conferenceRepository).save(argThat<ConferenceEntity> {
                         participants[0].email == "first@email.pl"
-                                && participants[0].confirmationLink == "http://wp.pl"
                                 && participants[1].email == "second@email.pl"
-                                && participants[1].confirmationLink == "http://wp.pl"
                     })
                 }
     }
@@ -60,17 +61,25 @@ class NewConferenceControllerTest {
 
     @Test
     fun `should return participant with its confirmation link after submitting conference`() {
+        val participant = Participant(email = "email@test.pl")
+        whenever(conferenceRepository.save(any<ConferenceEntity>()))
+                .thenReturn(ConferenceEntity(participants = listOf(participant)))
         submitConference("email@test.pl")
-                .andExpect(model().attribute("linkedParticipants", listOf("email@test.pl" to "http://wp.pl")))
+                .andExpect(model().attribute("linkedParticipants",
+                        listOf("email@test.pl" to "http://localhost:8080/confirm/${participant.id}")))
     }
 
     @Test
     fun `should return two participants with their confirmation links after submitting conference`() {
-        submitConference("email@test.pl, other@email.pl")
+        val first = Participant(email = "email@test.pl")
+        val second = Participant(email = "other@test.pl")
+        whenever(conferenceRepository.save(any<ConferenceEntity>()))
+                .thenReturn(ConferenceEntity(participants = listOf(first, second)))
+        submitConference("${first.email}, ${second.email}")
                 .andExpect(model()
                         .attribute("linkedParticipants",
-                                listOf("email@test.pl" to "http://wp.pl",
-                                        "other@email.pl" to "http://wp.pl")
+                                listOf(first.email to "http://localhost:8080/confirm/${first.id}",
+                                        second.email to "http://localhost:8080/confirm/${second.id}")
                         ))
     }
 
