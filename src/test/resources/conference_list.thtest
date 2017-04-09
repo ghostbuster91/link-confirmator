@@ -1,0 +1,21 @@
+%TEMPLATE_MODE HTML5
+%CONTEXT
+conferenceList = {new pl.ghostbuster.linkconfirmator.ConferenceViewModel("Conf One"), new pl.ghostbuster.linkconfirmator.ConferenceViewModel("Conf Two")}
+# ------------------------------------------
+%INPUT (file:src/main/resources/templates/conference_list.html)
+# ------------------------------------------
+%OUTPUT
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Conferences</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<ul>
+    <li>Conf One</li>
+    <li>Conf Two</li>
+</ul>
+</body>
+</html>

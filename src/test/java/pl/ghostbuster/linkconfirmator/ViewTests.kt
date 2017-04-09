@@ -19,4 +19,11 @@ class ViewTests {
         executor.execute("classpath:new_conference_submission.thtest")
         assertTrue(executor.isAllOK)
     }
+
+    @Test
+    fun `should render conference_list`() {
+        val executor = TestExecutor()
+        executor.execute("classpath:conference_list.thtest")
+        assertTrue(executor.isAllOK)
+    }
 }
