@@ -9,7 +9,7 @@ conference.participantsEmails = ""
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>Creating new conference</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
