@@ -14,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
@@ -48,6 +49,7 @@ class SecurityIntegrationTest {
     fun `should require authentication on new_conference endpoint`() {
         mockMvc.perform(get("/new_conference"))
                 .andExpect(status().isFound)
+                .andExpect(redirectedUrlPattern("**/login"))
     }
 
     @Test
@@ -68,6 +70,7 @@ class SecurityIntegrationTest {
     fun `should require authentication on conference endpoint`() {
         mockMvc.perform(get("/conference"))
                 .andExpect(status().isFound)
+                .andExpect(redirectedUrlPattern("**/login"))
     }
 
     @Configuration
