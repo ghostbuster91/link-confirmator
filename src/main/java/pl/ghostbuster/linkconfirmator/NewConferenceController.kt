@@ -25,7 +25,7 @@ class NewConferenceController(val repository: ConferenceRepository) {
     }
 
     private fun createConfirmationLink(participant: Participant): String {
-        return "http://localhost:8080/confirm/" + participant.id
+        return "http://localhost:8080/confirm?id=" + participant.id
     }
 }
 

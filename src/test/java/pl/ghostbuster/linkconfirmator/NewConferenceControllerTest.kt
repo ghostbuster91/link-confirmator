@@ -65,7 +65,7 @@ class NewConferenceControllerTest {
         stubRepositoryToReturnOnSave(participant)
         submitConference("email@test.pl")
                 .andExpect(model().attribute("linkedParticipants",
-                        listOf("email@test.pl" to "http://localhost:8080/confirm/${participant.id}")))
+                        listOf("email@test.pl" to "http://localhost:8080/confirm?id=${participant.id}")))
     }
 
     @Test
@@ -76,8 +76,8 @@ class NewConferenceControllerTest {
         submitConference("${first.email}, ${second.email}")
                 .andExpect(model()
                         .attribute("linkedParticipants",
-                                listOf(first.email to "http://localhost:8080/confirm/${first.id}",
-                                        second.email to "http://localhost:8080/confirm/${second.id}")
+                                listOf(first.email to "http://localhost:8080/confirm?id=${first.id}",
+                                        second.email to "http://localhost:8080/confirm?id=${second.id}")
                         ))
     }
 
