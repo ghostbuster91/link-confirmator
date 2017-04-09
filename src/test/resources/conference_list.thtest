@@ -17,5 +17,10 @@ conferenceList = {new pl.ghostbuster.linkconfirmator.ConferenceViewModel("Conf O
     <li>Conf One</li>
     <li>Conf Two</li>
 </ul>
+<div>
+    <form action="/testing/logout" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
 </body>
 </html>
