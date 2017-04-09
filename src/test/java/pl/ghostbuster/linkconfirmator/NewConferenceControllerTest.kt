@@ -62,8 +62,7 @@ class NewConferenceControllerTest {
     @Test
     fun `should return participant with its confirmation link after submitting conference`() {
         val participant = Participant(email = "email@test.pl")
-        whenever(conferenceRepository.save(any<ConferenceEntity>()))
-                .thenReturn(ConferenceEntity(participants = listOf(participant)))
+        stubRepositoryToReturnOnSave(participant)
         submitConference("email@test.pl")
                 .andExpect(model().attribute("linkedParticipants",
                         listOf("email@test.pl" to "http://localhost:8080/confirm/${participant.id}")))
@@ -73,14 +72,18 @@ class NewConferenceControllerTest {
     fun `should return two participants with their confirmation links after submitting conference`() {
         val first = Participant(email = "email@test.pl")
         val second = Participant(email = "other@test.pl")
-        whenever(conferenceRepository.save(any<ConferenceEntity>()))
-                .thenReturn(ConferenceEntity(participants = listOf(first, second)))
+        stubRepositoryToReturnOnSave(first, second)
         submitConference("${first.email}, ${second.email}")
                 .andExpect(model()
                         .attribute("linkedParticipants",
                                 listOf(first.email to "http://localhost:8080/confirm/${first.id}",
                                         second.email to "http://localhost:8080/confirm/${second.id}")
                         ))
+    }
+
+    private fun stubRepositoryToReturnOnSave(vararg participant: Participant) {
+        whenever(conferenceRepository.save(any<ConferenceEntity>()))
+                .thenReturn(ConferenceEntity(participants = participant.toList()))
     }
 
     private fun submitConference(emails: String): ResultActions {
