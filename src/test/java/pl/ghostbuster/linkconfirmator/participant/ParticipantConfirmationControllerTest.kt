@@ -11,7 +11,7 @@ import java.util.*
 
 class ParticipantConfirmationControllerTest {
     private val participantRepository = mock<ParticipantRepository>()
-    private val controller = ConfirmationController(participantRepository)
+    private val controller = ParticipantConfirmationController(participantRepository)
     private val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
     @Test

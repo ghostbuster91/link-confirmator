@@ -7,7 +7,7 @@ import pl.ghostbuster.linkconfirmator.ResourceNotFound
 import java.util.*
 
 @Controller
-class ConfirmationController(private val participantRepository: ParticipantRepository) {
+class ParticipantConfirmationController(private val participantRepository: ParticipantRepository) {
 
     @GetMapping("/confirm")
     fun confereneceForm(@RequestParam(name = "id", required = true) participantId: String): String {
