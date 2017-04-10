@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import pl.ghostbuster.linkconfirmator.conference.create.ConferenceForm
-import pl.ghostbuster.linkconfirmator.conference.model.Participant
+import pl.ghostbuster.linkconfirmator.participant.Participant
 import pl.ghostbuster.linkconfirmator.participant.ParticipantRepository
 
 @RunWith(SpringJUnit4ClassRunner::class)

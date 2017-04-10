@@ -15,7 +15,7 @@ import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
 import pl.ghostbuster.linkconfirmator.conference.create.ConferenceForm
 import pl.ghostbuster.linkconfirmator.conference.create.CreateConferenceController
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
-import pl.ghostbuster.linkconfirmator.conference.model.Participant
+import pl.ghostbuster.linkconfirmator.participant.Participant
 
 class CreateConferenceControllerTest {
 

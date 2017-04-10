@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
-import pl.ghostbuster.linkconfirmator.conference.model.Participant
+import pl.ghostbuster.linkconfirmator.participant.Participant
 
 @Controller
 class CreateConferenceController(val repository: ConferenceRepository) {
