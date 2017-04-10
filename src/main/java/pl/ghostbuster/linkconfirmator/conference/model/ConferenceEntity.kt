@@ -1,4 +1,4 @@
-package pl.ghostbuster.linkconfirmator
+package pl.ghostbuster.linkconfirmator.conference.model
 
 import java.util.*
 import javax.persistence.*

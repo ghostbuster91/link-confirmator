@@ -1,6 +1,6 @@
 %TEMPLATE_MODE HTML5
 %CONTEXT
-conferenceList = {new pl.ghostbuster.linkconfirmator.ConferenceViewModel("1"), new pl.ghostbuster.linkconfirmator.ConferenceViewModel("2")}
+conferenceList = {new pl.ghostbuster.linkconfirmator.conference.list.ConferenceViewModel("1"), new pl.ghostbuster.linkconfirmator.conference.list.ConferenceViewModel("2")}
 # ------------------------------------------
 %INPUT (file:src/main/resources/templates/conference_list.html)
 # ------------------------------------------

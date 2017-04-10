@@ -11,11 +11,16 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.model
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.view
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
+import pl.ghostbuster.linkconfirmator.conference.create.ConferenceForm
+import pl.ghostbuster.linkconfirmator.conference.create.CreateConferenceController
+import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
+import pl.ghostbuster.linkconfirmator.conference.model.Participant
 
 class NewConferenceControllerTest {
 
     private val conferenceRepository: ConferenceRepository = mock()
-    private val controller = NewConferenceController(conferenceRepository)
+    private val controller = CreateConferenceController(conferenceRepository)
     private val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
     @Before

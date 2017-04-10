@@ -9,6 +9,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.Configuration
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
+import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
+import pl.ghostbuster.linkconfirmator.conference.model.Participant
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @ContextConfiguration(classes = arrayOf(JpaIntegrationTest.TestConfiguration::class))

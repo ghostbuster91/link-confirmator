@@ -7,6 +7,9 @@ import org.junit.Test
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import pl.ghostbuster.linkconfirmator.conference.model.Participant
+import pl.ghostbuster.linkconfirmator.participant.ConfirmationController
+import pl.ghostbuster.linkconfirmator.participant.ParticipantRepository
 import java.util.*
 
 class ConfirmationControllerTest {

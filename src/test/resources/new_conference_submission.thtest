@@ -1,6 +1,6 @@
 %TEMPLATE_MODE HTML5
 %CONTEXT
-conference = new pl.ghostbuster.linkconfirmator.ConferenceForm()
+conference = new pl.ghostbuster.linkconfirmator.conference.create.ConferenceForm()
 conference.participantsEmails = ""
 # ------------------------------------------
 %INPUT (file:src/main/resources/templates/new_conference_submission.html)
