@@ -28,5 +28,11 @@ class ConferenceDetailsControllerTest {
                         ConferenceDetails(participants = listOf(
                                 ParticipantDetails(email = "test@email", confirmed = false)))))
     }
+
+    @Test
+    fun `should return bad request if the id is malformed`() {
+        mockMvc.perform(get("/conference?id=123"))
+                .andExpect(status().isBadRequest)
+    }
 }
 
