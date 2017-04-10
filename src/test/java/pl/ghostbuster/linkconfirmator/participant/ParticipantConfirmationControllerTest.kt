@@ -22,8 +22,14 @@ class ParticipantConfirmationControllerTest {
 
     @Test
     fun `should return status 200 when confirming exiting participant`() {
-        whenever(participantRepository.findOne(any())).thenReturn(Participant())
+        whenever(participantRepository.exists(any())).thenReturn(true)
         mockMvc.perform(MockMvcRequestBuilders.get("/confirm?id=${UUID.randomUUID()}"))
                 .andExpect(MockMvcResultMatchers.status().isOk)
+    }
+
+    @Test
+    fun `should return bad request if the id is not valid uuid`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/confirm?id=123"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest)
     }
 }
