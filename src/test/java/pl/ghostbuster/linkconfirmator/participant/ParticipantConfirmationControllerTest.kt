@@ -17,7 +17,7 @@ class ParticipantConfirmationControllerTest {
     @Test
     fun `should return status 404 when there is no participant on confirm`() {
         mockMvc.perform(MockMvcRequestBuilders.get("/confirm?id=${UUID.randomUUID()}"))
-                .andExpect(MockMvcResultMatchers.status().is4xxClientError)
+                .andExpect(MockMvcResultMatchers.status().isNotFound)
     }
 
     @Test
