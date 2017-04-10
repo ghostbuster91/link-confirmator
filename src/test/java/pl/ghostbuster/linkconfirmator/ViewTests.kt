@@ -26,4 +26,25 @@ class ViewTests {
         executor.execute("classpath:conference_list.thtest")
         assertTrue(executor.isAllOK)
     }
+
+    @Test
+    fun `should render login page`() {
+        val executor = TestExecutor()
+        executor.execute("classpath:login.thtest")
+        assertTrue(executor.isAllOK)
+    }
+
+    @Test
+    fun `should render login page with error`() {
+        val executor = TestExecutor()
+        executor.execute("classpath:login_invalid_credentials.thtest")
+        assertTrue(executor.isAllOK)
+    }
+
+    @Test
+    fun `should render login page with logout info`() {
+        val executor = TestExecutor()
+        executor.execute("classpath:login_logout.thtest")
+        assertTrue(executor.isAllOK)
+    }
 }
