@@ -1,4 +1,4 @@
-package pl.ghostbuster.linkconfirmator
+package pl.ghostbuster.linkconfirmator.conference.create
 
 import com.nhaarman.mockito_kotlin.*
 import org.junit.Before
@@ -12,8 +12,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.model
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.view
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
-import pl.ghostbuster.linkconfirmator.conference.create.ConferenceForm
-import pl.ghostbuster.linkconfirmator.conference.create.CreateConferenceController
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
 import pl.ghostbuster.linkconfirmator.participant.Participant
 

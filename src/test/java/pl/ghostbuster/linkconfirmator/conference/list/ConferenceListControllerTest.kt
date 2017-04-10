@@ -1,4 +1,4 @@
-package pl.ghostbuster.linkconfirmator
+package pl.ghostbuster.linkconfirmator.conference.list
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
@@ -7,8 +7,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
-import pl.ghostbuster.linkconfirmator.conference.list.ConferenceListController
-import pl.ghostbuster.linkconfirmator.conference.list.ConferenceViewModel
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
 
 class ConferenceListControllerTest {
