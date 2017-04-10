@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.model
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import pl.ghostbuster.linkconfirmator.DEFAULT_UUID
 import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
 import pl.ghostbuster.linkconfirmator.participant.Participant
@@ -33,6 +34,12 @@ class ConferenceDetailsControllerTest {
     fun `should return bad request if the id is malformed`() {
         mockMvc.perform(get("/conference?id=123"))
                 .andExpect(status().isBadRequest)
+    }
+
+    @Test
+    fun `should return not found if there is no conference for given id`() {
+        mockMvc.perform(get("/conference?id=$DEFAULT_UUID"))
+                .andExpect(status().isNotFound)
     }
 }
 
