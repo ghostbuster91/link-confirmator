@@ -8,43 +8,37 @@ class ViewTests {
 
     @Test
     fun `should render new_conference_submitted`() {
-        val executor = TestExecutor()
-        executor.execute("classpath:new_conference_submitted.thtest")
-        assertTrue(executor.isAllOK)
+        runTest("new_conference_submitted")
     }
 
     @Test
     fun `should render new_conference_submission`() {
-        val executor = TestExecutor()
-        executor.execute("classpath:new_conference_submission.thtest")
-        assertTrue(executor.isAllOK)
+        runTest("new_conference_submission")
     }
 
     @Test
     fun `should render conference_list`() {
-        val executor = TestExecutor()
-        executor.execute("classpath:conference_list.thtest")
-        assertTrue(executor.isAllOK)
+        runTest("conference_list")
     }
 
     @Test
     fun `should render login page`() {
-        val executor = TestExecutor()
-        executor.execute("classpath:login.thtest")
-        assertTrue(executor.isAllOK)
+        runTest("login")
     }
 
     @Test
     fun `should render login page with error`() {
-        val executor = TestExecutor()
-        executor.execute("classpath:login_invalid_credentials.thtest")
-        assertTrue(executor.isAllOK)
+        runTest("login_invalid_credentials")
     }
 
     @Test
     fun `should render login page with logout info`() {
+        runTest("login_logout")
+    }
+
+    private fun runTest(name: String) {
         val executor = TestExecutor()
-        executor.execute("classpath:login_logout.thtest")
+        executor.execute("classpath:$name.thtest")
         assertTrue(executor.isAllOK)
     }
 }
