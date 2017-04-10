@@ -15,7 +15,7 @@ class ParticipantConfirmationControllerTest {
     private val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
 
     @Test
-    fun `should return status 404 when there is no participant on confirm`() {
+    fun `should return not found when there is no participant on confirm`() {
         mockMvc.perform(MockMvcRequestBuilders.get("/confirm?id=${UUID.randomUUID()}"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound)
     }
