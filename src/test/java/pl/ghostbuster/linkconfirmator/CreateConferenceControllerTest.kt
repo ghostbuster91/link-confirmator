@@ -17,7 +17,7 @@ import pl.ghostbuster.linkconfirmator.conference.create.CreateConferenceControll
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
 import pl.ghostbuster.linkconfirmator.conference.model.Participant
 
-class NewConferenceControllerTest {
+class CreateConferenceControllerTest {
 
     private val conferenceRepository: ConferenceRepository = mock()
     private val controller = CreateConferenceController(conferenceRepository)

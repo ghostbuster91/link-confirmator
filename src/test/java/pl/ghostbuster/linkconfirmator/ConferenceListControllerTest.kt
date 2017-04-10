@@ -11,7 +11,7 @@ import pl.ghostbuster.linkconfirmator.conference.list.ConferenceListController
 import pl.ghostbuster.linkconfirmator.conference.list.ConferenceViewModel
 import pl.ghostbuster.linkconfirmator.conference.model.ConferenceEntity
 
-class ConferencesControllerTest {
+class ConferenceListControllerTest {
 
     private val conferenceRepository: ConferenceRepository = mock()
     private val controller = ConferenceListController(conferenceRepository)

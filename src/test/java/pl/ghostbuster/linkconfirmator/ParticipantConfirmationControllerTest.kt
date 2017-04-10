@@ -12,7 +12,7 @@ import pl.ghostbuster.linkconfirmator.participant.ConfirmationController
 import pl.ghostbuster.linkconfirmator.participant.ParticipantRepository
 import java.util.*
 
-class ConfirmationControllerTest {
+class ParticipantConfirmationControllerTest {
     private val participantRepository = mock<ParticipantRepository>()
     private val controller = ConfirmationController(participantRepository)
     private val mockMvc = MockMvcBuilders.standaloneSetup(controller).build()

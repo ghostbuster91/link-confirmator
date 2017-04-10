@@ -7,13 +7,13 @@ import org.thymeleaf.testing.templateengine.engine.TestExecutor
 class ViewTests {
 
     @Test
-    fun `should render new_conference_submitted`() {
-        runTest("new_conference_submitted")
+    fun `should render conference_create_success`() {
+        runTest("conference_create_success")
     }
 
     @Test
-    fun `should render new_conference_submission`() {
-        runTest("new_conference_submission")
+    fun `should render conference_create_form`() {
+        runTest("conference_create_form")
     }
 
     @Test
