@@ -1,6 +1,6 @@
 %TEMPLATE_MODE HTML5
 %CONTEXT
-conferenceList = {new pl.ghostbuster.linkconfirmator.ConferenceViewModel("Conf One"), new pl.ghostbuster.linkconfirmator.ConferenceViewModel("Conf Two")}
+conferenceList = {new pl.ghostbuster.linkconfirmator.ConferenceViewModel("1"), new pl.ghostbuster.linkconfirmator.ConferenceViewModel("2")}
 # ------------------------------------------
 %INPUT (file:src/main/resources/templates/conference_list.html)
 # ------------------------------------------
@@ -14,8 +14,12 @@ conferenceList = {new pl.ghostbuster.linkconfirmator.ConferenceViewModel("Conf O
 <body>
 <h1>Result</h1>
 <ul>
-    <li>Conf One</li>
-    <li>Conf Two</li>
+    <li>
+        <a href="/testing/conference?id=1">1</a>
+    </li>
+    <li>
+        <a href="/testing/conference?id=2">2</a>
+    </li>
 </ul>
 <div>
     <form action="/testing/logout" method="post">

@@ -7,7 +7,9 @@
 <body>
 <h1>Result</h1>
 <ul>
-    <li th:each="item : ${conferenceList}" th:text="${item.id}">Item description here...</li>
+    <li th:each="item : ${conferenceList}">
+        <a th:href="@{/conference?id={id}(id=${item.id})}" th:text="${item.id}">Item desc</a>
+    </li>
 </ul>
 <div>
     <form th:action="@{/logout}" method="post">
