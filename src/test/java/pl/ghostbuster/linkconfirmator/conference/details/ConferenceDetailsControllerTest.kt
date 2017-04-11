@@ -32,13 +32,13 @@ class ConferenceDetailsControllerTest {
 
     @Test
     fun `should return bad request if the id is malformed`() {
-        mockMvc.perform(get("/conference?id=123"))
+        mockMvc.perform(get("/conferences/123"))
                 .andExpect(status().isBadRequest)
     }
 
     @Test
     fun `should return not found if there is no conference for given id`() {
-        mockMvc.perform(get("/conference?id=$DEFAULT_UUID"))
+        mockMvc.perform(get("/conferences/$DEFAULT_UUID"))
                 .andExpect(status().isNotFound)
     }
 }
