@@ -5,8 +5,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.model
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import pl.ghostbuster.linkconfirmator.DEFAULT_UUID
 import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
@@ -25,6 +24,7 @@ class ConferenceDetailsControllerTest {
         whenever(conferenceRepository.findOne(any())).thenReturn(conference)
         mockMvc.perform(get("/conferences/${conference.id}"))
                 .andExpect(status().isOk)
+                .andExpect(view().name("conference_details"))
                 .andExpect(model().attribute("conferenceDetails",
                         ConferenceDetails(participants = listOf(
                                 ParticipantDetails(email = "test@email", confirmed = false)))))

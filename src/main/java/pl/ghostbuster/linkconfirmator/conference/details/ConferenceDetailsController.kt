@@ -19,6 +19,6 @@ class ConferenceDetailsController(private val conferenceRepository: ConferenceRe
         }
         val viewModel = ConferenceDetails(participants = participants)
         model.addAttribute("conferenceDetails", viewModel)
-        return "conferenceDetails"
+        return "conference_details"
     }
 }
