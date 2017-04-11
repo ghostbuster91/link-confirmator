@@ -2,7 +2,7 @@
 %CONTEXT
 linkedParticipants = {"email@test.pl, http://wp.pl"}
 # ------------------------------------------
-%INPUT (file:src/main/resources/templates/new_conference_submitted.html)
+%INPUT (file:src/main/resources/templates/conference_create_success.html)
 # ------------------------------------------
 %OUTPUT
 <!DOCTYPE HTML>

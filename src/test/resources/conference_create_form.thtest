@@ -3,7 +3,7 @@
 conference = new pl.ghostbuster.linkconfirmator.conference.create.ConferenceForm()
 conference.participantsEmails = ""
 # ------------------------------------------
-%INPUT (file:src/main/resources/templates/new_conference_submission.html)
+%INPUT (file:src/main/resources/templates/conference_create_form.html)
 # ------------------------------------------
 %OUTPUT
 <!DOCTYPE HTML>
