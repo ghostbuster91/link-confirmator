@@ -8,7 +8,7 @@ import pl.ghostbuster.linkconfirmator.conference.ConferenceRepository
 @Controller
 class ConferenceListController(private val conferenceRepository: ConferenceRepository) {
 
-    @GetMapping("/conference")
+    @GetMapping("/conferences")
     fun conference(model: Model): String {
         val conferences = conferenceRepository.findAll().toList()
         model.addAttribute("conferenceList", conferences.map { ConferenceViewModel(id = it.id.toString()) })

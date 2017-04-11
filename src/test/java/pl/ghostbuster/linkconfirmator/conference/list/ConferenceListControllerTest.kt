@@ -17,7 +17,7 @@ class ConferenceListControllerTest {
 
     @Test
     fun `should return conference list view on conference endpoint`() {
-        mockMvc.perform(get("/conference"))
+        mockMvc.perform(get("/conferences"))
                 .andExpect(status().isOk)
                 .andExpect(view().name("conference_list"))
     }
@@ -26,7 +26,7 @@ class ConferenceListControllerTest {
     fun `should return conference list model on conference endpoint`() {
         val conferenceEntity = ConferenceEntity()
         whenever(conferenceRepository.findAll()).thenReturn(listOf(conferenceEntity))
-        mockMvc.perform(get("/conference"))
+        mockMvc.perform(get("/conferences"))
                 .andExpect(model().attribute("conferenceList", listOf(ConferenceViewModel(conferenceEntity.id.toString()))))
     }
 }
