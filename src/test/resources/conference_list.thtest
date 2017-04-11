@@ -15,10 +15,10 @@ conferenceList = {new pl.ghostbuster.linkconfirmator.conference.list.ConferenceV
 <h1>Result</h1>
 <ul>
     <li>
-        <a href="/testing/conference?id=1">1</a>
+        <a href="/testing/conferences/1">1</a>
     </li>
     <li>
-        <a href="/testing/conference?id=2">2</a>
+        <a href="/testing/conferences/2">2</a>
     </li>
 </ul>
 <div>
