@@ -8,7 +8,7 @@
 <h1>Result</h1>
 <ul>
     <th:block th:object="${conferenceDetails}">
-        <li th:each="item : *{participants}" th:text="${item.email}">Item description here...</li>
+        <li th:each="item : *{participants}" th:text="${item.confirmed}? ${item.email} + ' V' : ${item.email} + ' X'">Item description here...</li>
     </th:block>
 </ul>
 </body>

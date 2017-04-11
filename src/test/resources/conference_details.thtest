@@ -1,6 +1,6 @@
 %TEMPLATE_MODE HTML5
 %CONTEXT
-conferenceDetails = new pl.ghostbuster.linkconfirmator.conference.details.ConferenceDetails({ new pl.ghostbuster.linkconfirmator.conference.details.ParticipantDetails("test@email.pl",false) })
+conferenceDetails = new pl.ghostbuster.linkconfirmator.conference.details.ConferenceDetails({ new pl.ghostbuster.linkconfirmator.conference.details.ParticipantDetails("test@email.pl",false),new pl.ghostbuster.linkconfirmator.conference.details.ParticipantDetails("test2@email.pl",true) })
 # ------------------------------------------
 %INPUT (file:src/main/resources/templates/conference_details.html)
 # ------------------------------------------
@@ -15,7 +15,8 @@ conferenceDetails = new pl.ghostbuster.linkconfirmator.conference.details.Confer
 <h1>Result</h1>
 <ul>
 
-        <li>test@email.pl</li>
+        <li>test@email.pl X</li>
+        <li>test2@email.pl V</li>
 
 </ul>
 </body>
