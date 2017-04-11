@@ -1,0 +1,22 @@
+%TEMPLATE_MODE HTML5
+%CONTEXT
+conferenceDetails = new pl.ghostbuster.linkconfirmator.conference.details.ConferenceDetails({ new pl.ghostbuster.linkconfirmator.conference.details.ParticipantDetails("test@email.pl",false) })
+# ------------------------------------------
+%INPUT (file:src/main/resources/templates/conference_details.html)
+# ------------------------------------------
+%OUTPUT
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Conference details</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<ul>
+
+        <li>test@email.pl</li>
+
+</ul>
+</body>
+</html>

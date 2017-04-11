@@ -36,6 +36,11 @@ class ViewTests {
         runTest("login_logout")
     }
 
+    @Test
+    fun `should render conference details page`() {
+        runTest("conference_details")
+    }
+
     private fun runTest(name: String) {
         val executor = TestExecutor()
         executor.execute("classpath:$name.thtest")
