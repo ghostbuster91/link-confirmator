@@ -30,7 +30,7 @@ class CreateConferenceControllerTest {
     fun `should return new_conference_submission page on conference endpoint`() {
         mockMvc.perform(get("/new_conference"))
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(view().name("new_conference_submission"))
+                .andExpect(view().name("conference_create_form"))
                 .andExpect(model().attribute("conference", ConferenceForm()))
     }
 
@@ -59,7 +59,7 @@ class CreateConferenceControllerTest {
     fun `should render new_conference_submitted page after submitting conference`() {
         submitConference("email@test.pl")
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(view().name("new_conference_submitted"))
+                .andExpect(view().name("conference_create_success"))
     }
 
     @Test
