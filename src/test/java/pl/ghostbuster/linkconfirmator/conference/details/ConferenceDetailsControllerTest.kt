@@ -23,7 +23,7 @@ class ConferenceDetailsControllerTest {
     fun `should return conference details through model`() {
         val conference = ConferenceEntity(participants = listOf(Participant(email = "test@email", confirmed = false)))
         whenever(conferenceRepository.findOne(any())).thenReturn(conference)
-        mockMvc.perform(get("/conference?id=${conference.id}"))
+        mockMvc.perform(get("/conferences/${conference.id}"))
                 .andExpect(status().isOk)
                 .andExpect(model().attribute("conferenceDetails",
                         ConferenceDetails(participants = listOf(
